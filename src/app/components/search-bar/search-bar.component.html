@@ -1,0 +1,15 @@
+<div class="flex gap-2 p-4">
+  <input
+    type="text"
+    [ngModel]="searchTerm"
+    (ngModelChange)="onSearch($event)"
+    placeholder="Search todos..."
+    class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <button
+    (click)="toggleFilters.emit()"
+    class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+  >
+    Filters
+  </button>
+</div>

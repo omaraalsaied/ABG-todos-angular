@@ -1,3 +1,26 @@
-<div class="max-w-2xl mx-auto">
-  <app-header></app-header>
+<div class="min-h-screen bg-gray-100">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg">
+    <app-header />
+
+    <main>
+      <app-search-bar
+        (search)="onSearch($event)"
+        (toggleFilters)="showFilters = !showFilters"
+      />
+
+      <div class="grid" [class.grid-cols-[1fr,300px]]="showFilters">
+        <div>
+          <app-todo-form (todoAdded)="loadTodos()" />
+          <app-todo-list [todos]="filteredTodos" />
+        </div>
+
+        @if (showFilters) {
+          <app-filter-panel
+            [currentFilter]="currentFilter"
+            (filterChange)="onFilterChange($event)"
+          />
+        }
+      </div>
+    </main>
+  </div>
 </div>
